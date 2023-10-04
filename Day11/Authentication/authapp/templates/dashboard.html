@@ -1,0 +1,8 @@
+{% if messages %}
+{% for message in messages %}
+<h2> {{message}} </h2>
+{% endfor %}
+{% endif %}
+<h1> Welcome to the dashboard {{user}} </h1>
+
+<a href=" {% url 'log_out'%}">Logout</a>

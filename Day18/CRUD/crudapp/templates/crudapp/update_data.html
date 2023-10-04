@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Data Page</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <form method="post" action='{% url "update_data" std.id %}'>   
+        {% csrf_token %}   
+        <label>
+            First Name: <input name="first_name" type="text" class="feedback-input" placeholder="First Name" value="{{std.first_name}}" />    
+        </label>
+
+        <label>
+            Last Name: <input name="last_name" type="text" class="feedback-input" placeholder="Last Name" value="{{std.last_name}}"/>
+        </label>
+
+        <label>
+            E-mail: <input name="email" type="email" class="feedback-input" placeholder="Email" value="{{std.email}}"/>
+        </label>
+
+        <label>
+            Phone No:<input name="phone" type="number" class="feedback-input" placeholder="Phone" value="{{std.phone}}"/>
+        </label>
+
+        <label>
+            Message: <textarea name="text" class="feedback-input" placeholder="Your Message here" >{{std.message}}</textarea>
+        </label>
+        <input type="submit" value="Update"/>
+      </form>
+    </body>
+
+</html>

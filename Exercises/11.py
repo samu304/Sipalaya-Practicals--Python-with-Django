@@ -1,0 +1,1 @@
+# 11. Write a Python program that takes a list of tuples, where each tuple contains a string and a list of integers, and returns a new list containing the tuples sorted by the median of the integers in the list, with ties broken by the length of the string.

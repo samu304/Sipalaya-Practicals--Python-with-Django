@@ -1,0 +1,47 @@
+<h1>Update Student Information</h1>
+{% load static %}
+<hr>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+<form class="form" method="post" enctype="multipart/form-data" action="{% url 'update_data' std.slug %}">
+      {% csrf_token %}
+
+      <h3>Profile Picture </h3>
+        <label>
+            <input required="" type="file" placeholder="" class="input" name="image">
+        </label>
+
+        <label>
+            <input required="" placeholder="" type="text" class="input" name="name" value="{{std.name}}">
+            <span>Name</span>
+        </label>
+
+        <label>
+            <input required="" placeholder="" type="text" class="input" name="address" value="{{std.address}}">
+            <span>Address</span>
+        </label>
+    
+            
+    <label>
+        <input required="" placeholder="" type="text" class="input" name="level" value="{{std.level}}">
+        <span>Level</span>
+    </label> 
+        
+    
+
+    <label>
+        <input required="" type="tel" placeholder="" class="input" name="slug" value="{{std.slug}}">
+        <span>Slug</span>
+    </label>
+    
+    <button class="fancy" href="#">
+      <span class="top-key"></span>
+      <span class="text">Update</span>
+      <span class="bottom-key-1"></span>
+      <span class="bottom-key-2"></span>
+    </button>
+</form>
+{% if messages %}
+  {% for message in messages%}
+  <h3 style="color:red"> {{message}}</h3>
+  {% endfor%}
+{% endif %}

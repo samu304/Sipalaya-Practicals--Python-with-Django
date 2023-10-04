@@ -1,0 +1,35 @@
+<h1> Hello World From Samundra </h1>
+<h3>This is a Student Registration Form </h3>
+
+<form action='' method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Add" />
+</form>
+<hr>
+<br><br>
+<table width="100%" border='1px solid'>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Birth</th>
+        <th>Action</th>
+    </tr>
+    {% for std in students %}
+    <tr>
+        <td>{{std.id}}</td>
+        <td>{{std.name}}</td>
+        <td>{{std.email}}</td>
+        <td>{{std.age}}</td>
+        <td>{{std.address}}</td>
+        <td>{{std.birth}}</td>
+        <td>
+            <a href="{% url 'update_data' std.id %}">Update</a>
+            <a href="{% url 'delete_data' std.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Data Page</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <form method="post" action='{% url "show_data" %}'>   
+        {% csrf_token %}   
+        <label>
+            First Name: <input name="first_name" type="text" class="feedback-input" placeholder="First Name" />    
+        </label>
+
+        <label>
+            Last Name: <input name="last_name" type="text" class="feedback-input" placeholder="Last Name" />
+        </label>
+
+        <label>
+            E-mail: <input name="email" type="email" class="feedback-input" placeholder="Email" />
+        </label>
+
+        <label>
+            Phone No:<input name="phone" type="number" class="feedback-input" placeholder="Phone" />
+        </label>
+
+        <label>
+            Message: <textarea name="text" class="feedback-input" placeholder="Your Message here"></textarea>
+        </label>
+        <input type="submit" value="SUBMIT"/>
+      </form>
+
+      {% if messages %}
+      {% for message in messages %}
+      <h3 style='color: green'> {{message}} </h3>
+      {% endfor %}
+      {% endif %}
+
+      <table width="100%" border="1px solid #CC4949">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Message</th>
+            <th>Action</th>
+            
+        </tr>
+
+        {% for std in students %}
+        <tr>
+            <td>{{std.id}}</td>
+            <td>{{std.first_name}}</td>
+            <td>{{std.last_name}}</td>
+            <td>{{std.email}}</td>
+            <td>{{std.phone}}</td>
+            <td>{{std.message}}</td>
+            <td>
+                <a href="{% url 'update_data' std.id %}">Edit</a>
+                <a href="{% url 'delete_data' std.id %}">Delete</a>
+            </td>
+            
+        </tr>
+        {% endfor %}
+      </table>
+</body>
+</html>

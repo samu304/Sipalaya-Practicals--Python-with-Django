@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task App</title>
+</head>
+<body>
+    
+    <h1>Notes Web App</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="content">Content: </label>
+        <input type="text" id="content" placeholder="Enter Your Note" name="content" >
+
+        <input type="submit" value="Add">
+    </form>
+
+    <hr>
+
+    {% if messages %}
+    {% for message in messages %}
+    <h2>{{message}}</h2>
+    {% endfor %}
+    {% endif %}
+
+    {% for task in tasks %}
+    <ul>
+        <li>
+            {{task}}
+            <button><a href=" {% url 'update_note' task.id %} ">Update</a></button>
+            <button><a href=" {% url 'delete_note' task.id %} ">Delete</a></button>
+        </li>
+    </ul>
+    {% endfor %}
+
+</body>
+</html>

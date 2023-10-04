@@ -1,0 +1,1 @@
+# 7. Write a Python program that takes a list of tuples, where each tuple contains a string and an integer, and returns a new list containing the tuples sorted by the length of the string, with ties broken by the value of the integer.

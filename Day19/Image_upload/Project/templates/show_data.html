@@ -1,0 +1,74 @@
+<h1>Add Student Information</h1>
+{% load static %}
+<hr>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+<form class="form" method="post" enctype="multipart/form-data" action="{% url 'show_data' %}">
+      {% csrf_token %}
+    <h3>Profile Picture </h3>
+      <label>
+        <input required="" type="file" placeholder="" class="input" name="image">
+        </label>
+
+        <label>
+            <input required="" placeholder="" type="text" class="input" name="name">
+            <span>Name</span>
+        </label>
+
+        <label>
+            <input required="" placeholder="" type="text" class="input" name="address">
+            <span>Address</span>
+        </label>
+    
+            
+    <label>
+        <input required="" placeholder="" type="text" class="input" name="level">
+        <span>Level</span>
+    </label> 
+        
+    
+
+    <label>
+        <input required="" type="tel" placeholder="" class="input" name="slug">
+        <span>Slug</span>
+    </label>
+    
+    <button class="fancy" href="#">
+      <span class="top-key"></span>
+      <span class="text">submit</span>
+      <span class="bottom-key-1"></span>
+      <span class="bottom-key-2"></span>
+    </button>
+</form>
+{% if messages %}
+  {% for message in messages%}
+  <h3 style="color:red"> {{message}}</h3>
+  {% endfor%}
+{% endif %}
+
+<hr>
+<h4> Show Student Information </h4>
+<table width="100%" border="3px solid red;">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Level</th>
+        <th>Profile</th>
+        <th>Slug</th>
+        <th>Action </th>
+    </tr>
+    {% for std in students%}
+    <tr>
+        <td>{{std.id}}</td>
+        <td>{{std.name}}</td>
+        <td>{{std.address}}</td>
+        <td>{{std.level}}</td>
+        <td><img src="{{std.image.url}}"></td>
+        <td>{{std.slug}}</td>
+        <td>
+            <a href="{% url 'update_data' std.slug %}">Update  </a>
+            <a href="{% url 'delete_data' std.slug %}"> Delete </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

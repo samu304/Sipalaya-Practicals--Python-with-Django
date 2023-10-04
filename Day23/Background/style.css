@@ -1,0 +1,46 @@
+body{
+    margin-top: 100px;
+    margin-left: 200px;
+    
+}
+.sky{
+    background-color: skyblue;
+    width: 1000px;
+    height: 500px;
+    padding-top: 150px;
+}
+
+.sun{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 50px;
+    margin-left: 50px;
+    box-shadow: 5px 5px 5px rgb(137, 137, 26);
+}
+
+.img{
+    display: inline;
+    height: 200px;
+    width: 300px;
+    margin-left: 600px;
+}
+
+.hill1{
+    float: left;
+    width: 600px;
+    height: 300px;
+    background-color: green;
+    border-radius: 0 100% 0 0;
+    margin: -100px 0 0 0;
+}
+
+.hill2{
+    float: right;
+    width: 600px;
+    height: 200px;
+    background-color: green;
+    border-radius: 200% 0 0 0;
+    margin: -200px 0 0 -150px;
+}
